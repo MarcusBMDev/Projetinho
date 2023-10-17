@@ -1,3 +1,4 @@
+import csv
 def deletar_produto(produto, indice):
     if 0 <= indice < len(produto):
         del produto[indice]
@@ -47,13 +48,6 @@ while True:
     elif opc == 4:
         indice = int(input("Digite o ID que deseja deletar:"))
         deletar_produto(produtos,indice)
-    elif opc == 5:
-        print("Escolha uma opção:")
-        print("1 - Adicionar;")
-        print("2 - Remover;")
-        opc = int(input(""))
-        indice = int(input("Digite o ID do produto que deseja atualizar:"))
-        atualizar_estoque(produtos, indice)
     else:
 
         break

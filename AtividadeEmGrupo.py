@@ -88,7 +88,7 @@ while True:
         i3 = float(input("Valor do terceiro imposto:  "))
         margem = float(input("Valor da margem desejada:   "))
         vlrc=0
-        vlrv=0  
+        valor_venda=0  
 
         atualizar_produtos(produtos, nome, valor, quantidade, frete, imposto1, imposto2, imposto3, margem,custo,valor_venda)
     elif opc == 4:

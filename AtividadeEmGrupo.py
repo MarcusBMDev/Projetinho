@@ -71,7 +71,7 @@ while True:
         Imposto3 = float(input("Digite o imposto 3:   "))/100
         Margem = float(input("Digite a margem:  "))/100
 
-        vlrc=0
+        custo=0
         valor_venda=0       
 
         cadastrar_produto(produtos, nome, valor, quantidade, frete, imposto1, imposto2, imposto3, margem,custo,valor_venda)
@@ -83,11 +83,11 @@ while True:
         valor = float(input("Valor do produto:  "))
         quantidade = float(input("Quantidade do produto:  "))
         frete = float(input("Valor do frete:  "))
-        i1 = float(input("Valor do primeiro imposto:  "))
-        i2 = float(input("valor do seungo imposto:  "))
-        i3 = float(input("Valor do terceiro imposto:  "))
+        Imposto1 = float(input("Valor do primeiro imposto:  "))
+        Imposto2 = float(input("valor do seungo imposto:  "))
+        Imposto3 = float(input("Valor do terceiro imposto:  "))
         margem = float(input("Valor da margem desejada:   "))
-        vlrc=0
+        custo=0
         valor_venda=0  
 
         atualizar_produtos(produtos, nome, valor, quantidade, frete, imposto1, imposto2, imposto3, margem,custo,valor_venda)

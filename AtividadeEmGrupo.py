@@ -27,8 +27,7 @@ def salvar_produto(produtos):
         for produto in produtos:
             writer.writerow([produto['Nome'], produto['Quantidade'], produto['Frete'], produto['Imposto1'], produto['imposto2'], produto['imposto3'], produto['Margem'],produto['Custo'],produto['Valor_venda']])
 
-
-
+#Deletar o produto
 def deletar_produto(produto, indice):
     if 0 <= indice < len(produto):
         del produto[indice]
@@ -36,6 +35,7 @@ def deletar_produto(produto, indice):
     else:
         print("Produto não encontrato, tente novamente.")
 
+#Deletar o produto dentro do arquivo csv
 def deletar_produto_csv(produtos.csv, indice):
     
         with open(produtos.csv, 'r', newline='') as arquivo_csv:
@@ -72,7 +72,7 @@ while True:
         Margem = float(input("Digite a margem:  "))/100
 
         vlrc=0
-        vlrv=0       
+        valor_venda=0       
 
         cadastrar_produto(produtos, nome, valor, quantidade, frete, imposto1, imposto2, imposto3, margem,custo,valor_venda)
     elif opc == 2:

@@ -1,4 +1,33 @@
+#importa o csv
 import csv
+#Cadastra o prouduto 
+def cadastra_produto(produtos, nome, valor, quantidade, frete, imposto1, imposto2, imposto3, margem,custo,valor_venda):
+    produto = {
+        'Nome': nome,
+        'Valor': valor,
+        'Quantidade': quantidade,
+        'Frete': frete,
+        'Imposto1': imposto1,
+        'Imposto2': imposto2,
+        'Imposto3': imposto3,
+        'Margem': margem,
+        'Custo': custo,
+        'Valor_venda': valor_venda  
+    }
+    produtos.append(produto)
+    print("Produto cadastrado com sucesso!")
+    print("*************************************")
+    print("\n")
+
+# salvar no csv
+def salvar_produto(produtos):
+    with open('arquivos.csv', mode='w', newline='') as arquivos_csv:
+        writer = csv.writer(arquivos_csv)
+        writer.writerow(["Nome", "Valos", "Quantidade","Frete","imposto1","imposto2","imposto3","Margem", "Custo", "Valor_venda"])  # Escreve o cabeçalho no arquivo CSV
+        for produto in produtos:
+            writer.writerow([produto['Nome'], produto['Quantidade'], produto['Frete'], produto['Imposto1'], produto['imposto2'], produto['imposto3'], produto['Margem'],produto['Custo'],produto['Valor_venda']])
+
+
 
 def deletar_produto(produto, indice):
     if 0 <= indice < len(produto):
@@ -20,6 +49,8 @@ def deletar_produto_csv(produtos.csv, indice):
                 print(f"Produto deletado com sucesso: {produto_deletado}")
             else:
                 print("Produto não encontrado, tente novamente.")
+
+
 
 while True:
     opc = int(input(f"Bem vindo ao sistema ESTOQUE, escolha uma opção: \n" 
@@ -63,6 +94,13 @@ while True:
     elif opc == 4:
         indice = int(input("Digite o ID que deseja deletar:"))
         deletar_produto(produtos,indice)
+    elif opc == 5:
+        print("Escolha uma opção:")
+        print("1 - Adicionar;")
+        print("2 - Remover;")
+        opc = int(input(""))
+        indice = int(input("Digite o ID do produto que deseja atualizar:"))
+        atualizar_estoque(produtos, indice)
     else:
 
         break

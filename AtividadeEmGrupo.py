@@ -36,7 +36,7 @@ def deletar_produto(produto, indice):
         print("Produto não encontrato, tente novamente.")
 
 #Deletar o produto dentro do arquivo csv
-def deletar_produto_csv(produtos.csv, indice):
+def deletar_produto_csv(produtos, indice):
     
         with open(produtos.csv, 'r', newline='') as arquivo_csv:
             linhas = list(csv.reader(arquivo_csv))

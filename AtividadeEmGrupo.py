@@ -35,6 +35,34 @@ def deletar_produto(produto, indice):
     else:
         print("Produto não encontrato, tente novamente.")
 
+#atualizar o produto
+def atualizar_produtos_csv(produtos, indice, nome, valor, quantidade, frete, i1, i2, i3, margem, custo, venda):
+    if 0 <= indice < len(produtos):
+        produtos[indice]['Nome'] = nome
+        produtos[indice]['Valor'] = valor
+        produtos[indice]['Quantidade'] = quantidade
+        produtos[indice]['Frete'] = frete
+        produtos[indice]['Imp1'] = i1
+        produtos[indice]['Imdefp2'] = i2
+        produtos[indice]['Imp3'] = i3
+        produtos[indice]['Margem'] = margem
+        produtos[indice]['Valor_custo'] = custo
+        produtos[indice]['Valor_venda'] = venda
+
+    
+        with open('produtos.csv', mode='w', newline='') as arquivo_csv:
+            writer = csv.writer(arquivo_csv)
+            writer.writerow(["ID", "Nome", "Valor", "Quantidade", "Frete", "Imposto1", "Imposto2", "Imposto3", "Margem", "Custo", "Venda"])
+            for idx, produto in enumerate(produtos):
+                writer.writerow(idx, produto['Nome'], produto['Valor'], produto['Quantidade'],
+                                 produto['Frete'], produto['Imp1'], produto['Imp2'], produto['Imp3'],
+                                 produto['Margem'], produto['Valor_custo'], produto['Valor_venda'])
+        
+        print(f"Produto atualizado e arquivo CSV salvo com sucesso!")
+    else:
+        print("ID não encontrado!")
+
+
 #Deletar o produto dentro do arquivo csv
 def deletar_produto_csv(produtos, indice):
     

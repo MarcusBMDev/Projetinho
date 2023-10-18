@@ -1,5 +1,6 @@
 #importa o csv
 import csv
+produtos = []
 #Cadastra o prouduto 
 def cadastra_produto(produtos, nome, valor, quantidade, frete, imposto1, imposto2, imposto3, margem,custo,valor_venda):
     produto = {
@@ -78,6 +79,19 @@ def deletar_produto_csv(produtos, indice):
             else:
                 print("Produto não encontrado, tente novamente.")
 
+#Função de imprimir
+def imprimir_produtos(produtos):
+    with open('arquivo.csv',newline='') as arquivo_csv:
+
+        leitor_csv = csv.reader(arquivo_csv)
+        linhas = list(leitor_csv)
+
+    for i,linha in enumerate(linhas):
+        if i == 0:
+            print(linha)
+        Custo = produtos[i]['Valor']+(produtos[i]['Valor']*produtos[i]['Imposto1']+produtos[i]['Valor']*produtos[i]['Imposto2']+produtos[i]['Valor']*produtos[i]['Imposto3'])+(produtos[i]['Quantidade']/produtos[i]['Frete'])
+        print(f"{produtos[i]['Nome']},{produtos[i]['Valor']},{Custo},{produtos[i]['Custo']+(Custo*produtos[i]['Margem'])},{produtos[i]['Quantidade']}")
+
 
 
 while True:
@@ -87,22 +101,25 @@ while True:
                     "3 - Atualizar produto:\n"
                     "4 - Deletar produto:\n"
                     "5 - Saindo do sistema de estoque\n"))
+    
 
     if opc == 1:
 
-        Nome = input("Digite o nome:    ")
-        Valor = float(input("Digite o valor:    "))
-        Quantidade = int(input("Digite a quantidade:    "))
-        Frete = float(input("Digite o frete:    "))
-        Imposto1 = float(input("Digite o imposto 1:   "))/100
-        Imposto2 = float(input("Digite o imposto 2:   "))/100
-        Imposto3 = float(input("Digite o imposto 3:   "))/100
-        Margem = float(input("Digite a margem:  "))/100
+        nome = input("Digite o nome:    ")
+        valor = float(input("Digite o valor:    "))
+        quantidade = int(input("Digite a quantidade:    "))
+        frete = float(input("Digite o frete:    "))
+        imposto1 = float(input("Digite o imposto 1:   "))/100
+        imposto2 = float(input("Digite o imposto 2:   "))/100
+        imposto3 = float(input("Digite o imposto 3:   "))/100
+        margem = float(input("Digite a margem:  "))/100
+
+        
 
         custo=0
         valor_venda=0       
 
-        cadastrar_produto(produtos, nome, valor, quantidade, frete, imposto1, imposto2, imposto3, margem,custo,valor_venda)
+        cadastra_produto(produtos, nome, valor, quantidade, frete, imposto1, imposto2, imposto3, margem,custo,valor_venda)
     elif opc == 2:
         imprimir_produtos(produtos)
     elif opc == 3:
@@ -111,9 +128,9 @@ while True:
         valor = float(input("Valor do produto:  "))
         quantidade = float(input("Quantidade do produto:  "))
         frete = float(input("Valor do frete:  "))
-        Imposto1 = float(input("Valor do primeiro imposto:  "))
-        Imposto2 = float(input("valor do seungo imposto:  "))
-        Imposto3 = float(input("Valor do terceiro imposto:  "))
+        imposto1 = float(input("Valor do primeiro imposto:  "))
+        imposto2 = float(input("valor do seungo imposto:  "))
+        imposto3 = float(input("Valor do terceiro imposto:  "))
         margem = float(input("Valor da margem desejada:   "))
         custo=0
         valor_venda=0  

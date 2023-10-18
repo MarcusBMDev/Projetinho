@@ -52,8 +52,8 @@ def deletar_produto_csv(produtos, indice):
                 print("Produto não encontrado, tente novamente.")
 
 #Função de imprimir
-def imprimir_produtos(produtos, produto):
-    with open('produto.csv',newline='') as arquivo_csv:
+def imprimir_produtos(produtos):
+    with open('arquivo.csv',newline='') as arquivo_csv:
 
         leitor_csv = csv.reader(arquivo_csv)
         linhas = list(leitor_csv)
@@ -61,8 +61,9 @@ def imprimir_produtos(produtos, produto):
     for i,linha in enumerate(linhas):
         if i == 0:
             print(linha)
-        Custo = produto['Valor']+(produto['Valor']*produto['Imposto1']+produto['Valor']*produto['Imposto2']+produto['Valor']*produto['Imposto3'])+(produto['Quantidade']/produto['Frete'])
-        print(f"{produto['Nome']},{produto['Valor']},{Custo},{produto['Custo']+(Custo*produto['Margem'])},{produto['Quantidade']}")
+        Custo = produtos[i]['Valor']+(produtos[i]['Valor']*produtos[i]['Imposto1']+produtos[i]['Valor']*produtos[i]['Imposto2']+produtos[i]['Valor']*produtos[i]['Imposto3'])+(produtos[i]['Quantidade']/produtos[i]['Frete'])
+        print(f"{produtos[i]['Nome']},{produtos[i]['Valor']},{Custo},{produtos[i]['Custo']+(Custo*produtos[i]['Margem'])},{produtos[i]['Quantidade']}")
+
 
 
 while True:

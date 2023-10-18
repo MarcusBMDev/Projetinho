@@ -21,12 +21,11 @@ def cadastra_produto(produtos, nome, valor, quantidade, frete, imposto1, imposto
     print("\n")
 
 # salvar no csv
-def salvar_produto(produtos):
-    with open('arquivos.csv', mode='w', newline='') as arquivos_csv:
-        writer = csv.writer(arquivos_csv)
-        writer.writerow(["Nome", "Valos", "Quantidade","Frete","imposto1","imposto2","imposto3","Margem", "Custo", "Valor_venda"])  # Escreve o cabeçalho no arquivo CSV
+with open('produtos.csv', mode='w', newline='') as arquivo_csv:
+        writer = csv.writer(arquivo_csv)
+        writer.writerow(["Nome", "Valor", "Quantidade", "Frete", "Imposto1", "Imposto2", "Imposto3", "Margem", "Custo", "Valor_venda"])
         for produto in produtos:
-            writer.writerow([produto['Nome'], produto['Quantidade'], produto['Frete'], produto['Imposto1'], produto['imposto2'], produto['imposto3'], produto['Margem'],produto['Custo'],produto['Valor_venda']])
+            writer.writerow([produto['Nome'], produto['Valor'], produto['Quantidade'], produto['Frete'], produto['Imposto1'], produto['Imposto2'], produto['Imposto3'], produto['Margem'], produto['Custo'], produto['Valor_venda']])
 
 #Deletar o produto
 def deletar_produto(produto, indice):
